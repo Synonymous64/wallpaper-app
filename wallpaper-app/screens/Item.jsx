@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
 const Item = ({ route }) => {
     const id = route?.params?.param;
     // console.log(id);
+    const navigation = useNavigation();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -14,7 +17,7 @@ const Item = ({ route }) => {
             {isLoading ? (<ActivityIndicator color="#ff0000" size="large" />) : (<>
                 <Image source={{ uri: 'https://images.pexels.com/photos/3617500/pexels-photo-3617500.jpeg?auto=compress&cs=tinysrgb&w=600' }} className="w-full h-full object-cover" alt='background' />
                 <SafeAreaView className="absolute z-10 inset-0 flex items-center justify-start mt-12">
-                    <TouchableOpacity className="w-full flex px-4">
+                    <TouchableOpacity className="w-full flex px-4" onPress={()=> navigation.navigate("HomeScreen")}>
                         <Ionicons name="arrow-back-circle" size={32} color="white" />
                     </TouchableOpacity>
                     <View className="w-full h-full relative">
