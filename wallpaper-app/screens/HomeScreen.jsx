@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView, TouchableOpacity, ScrollView, ActivityIndicat
 import React, { useState } from 'react';
 
 import { Entypo } from '@expo/vector-icons';
-import MasonryList from '@react-native-seoul/masonry-list';
+import MasonryLayout from './MasonryLayout';
 
 const HomeScreen = () => {
     const [categories, setCategories] = useState(null);
@@ -14,6 +14,10 @@ const HomeScreen = () => {
         { id: 4, name: 'randomPic', imageURL: 'https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=600' },
         { id: 5, name: 'randomPic', imageURL: 'https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=600' },
         { id: 6, name: 'randomPic', imageURL: 'https://images.pexels.com/photos/2362002/pexels-photo-2362002.jpeg?auto=compress&cs=tinysrgb&w=600' },
+        { id: 7, name: 'randomPic', imageURL: 'https://images.pexels.com/photos/2362002/pexels-photo-2362002.jpeg?auto=compress&cs=tinysrgb&w=600' },
+        { id: 8, name: 'randomPic', imageURL: 'https://images.pexels.com/photos/2362002/pexels-photo-2362002.jpeg?auto=compress&cs=tinysrgb&w=600' },
+        { id: 9, name: 'randomPic', imageURL: 'https://images.pexels.com/photos/2362002/pexels-photo-2362002.jpeg?auto=compress&cs=tinysrgb&w=600' },
+        { id: 10, name: 'randomPic', imageURL: 'https://images.pexels.com/photos/2362002/pexels-photo-2362002.jpeg?auto=compress&cs=tinysrgb&w=600' },
     ]
 
     return (
@@ -30,13 +34,7 @@ const HomeScreen = () => {
                 <ScrollView className="w-full h-full px-4">
                     {data ?
                         (<>
-                            <MasonryList
-                                data={data}
-                                keyExtractor={(item) => item.id}
-                                numColumns={2}
-                                showsVerticalScrollIndicator={false}
-                                renderItem={({ item }) => <CardItem data={item} />}
-                            />
+                            <MasonryLayout data={data}/>
 
                         </>
                         ) :
@@ -51,14 +49,5 @@ const HomeScreen = () => {
     );
 };
 
-const CardItem = ({ data }) => {
-    return (
-        <TouchableOpacity style={{ height: Math.round(Math.random() * 100 + 200) }} className="bg-[#111] m-1 rounded-md relative overflow-hidden">
-            <Image
-                source={{ uri: data.imageURL }} alt="img" className="w-full h-full object-cover"
-            />
-        </TouchableOpacity>
-    )
-}
 
 export default HomeScreen;
