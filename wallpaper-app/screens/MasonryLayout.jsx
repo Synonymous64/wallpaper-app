@@ -2,6 +2,7 @@ import { Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import MasonryList from '@react-native-seoul/masonry-list';
 import { useNavigation } from '@react-navigation/native';
+import { urlFor } from '../sanity';
 
 const CardItem = ({ data }) => {
     const navigation = useNavigation();
@@ -13,7 +14,7 @@ const CardItem = ({ data }) => {
     return (
         <TouchableOpacity style={{ height: Math.round(Math.random() * 100 + 200) }} className="bg-[#111] m-1 rounded-md relative overflow-hidden" onPress={handleClick}>
             <Image
-                source={{ uri: data.imageURL }} alt="img" className="w-full h-full object-cover"
+                source={{ uri: urlFor(data.image).url() }} alt="img" className="w-full h-full object-cover"
             />
         </TouchableOpacity>
     )
