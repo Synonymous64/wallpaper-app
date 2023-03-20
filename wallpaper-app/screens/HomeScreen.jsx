@@ -29,7 +29,7 @@ const HomeScreen = () => {
                 <ScrollView className="w-full h-full px-4">
                     {categories ?
                         (<>
-                            <MasonryLayout data={categories} />
+                            <MasonryLayout data={categories} screen="ItemsScreen"/>
 
                         </>
                         ) :

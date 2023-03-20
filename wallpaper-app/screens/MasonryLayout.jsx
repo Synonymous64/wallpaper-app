@@ -4,11 +4,11 @@ import MasonryList from '@react-native-seoul/masonry-list';
 import { useNavigation } from '@react-navigation/native';
 import { urlFor } from '../sanity';
 
-const CardItem = ({ data }) => {
+const CardItem = ({ data, screen }) => {
     const navigation = useNavigation();
 
     const handleClick = () => {
-        navigation.navigate('Item', { param: data.id });
+        navigation.navigate(screen, { param: data._id });
     }
 
     return (
@@ -20,14 +20,14 @@ const CardItem = ({ data }) => {
     )
 }
 
-const MasonryLayout = ({ data }) => {
+const MasonryLayout = ({ data, screen }) => {
     return (
         <MasonryList
             data={data}
             keyExtractor={(item) => item.id}
             numColumns={2}
             showsVerticalScrollIndicator={false}
-            renderItem={({ item }) => <CardItem data={item} />}
+            renderItem={({ item }) => <CardItem data={item} screen={screen} />}
         />
     )
 }

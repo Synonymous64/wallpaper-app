@@ -17,3 +17,13 @@ export const getCategory = async () => {
     return items;
 };
 
+export const getCategoryItemsById = async (id) => {
+    const items = await client.fetch(`*[_type == "items" && $id in category[] -> _id]`, { id }).then((data) => { return data; });
+    return items;
+};
+
+export const getItemById = async (id) => {
+    const item = await client.fetch(`*[_type == "items" && _id == $id ][0]`, { id }).then((data) => { return data; });
+    return item;
+};
+
